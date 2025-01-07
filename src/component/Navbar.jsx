@@ -19,6 +19,10 @@ const Navbar = () => {
         title:"Gellary",
         path:"/gellary"
     },
+    {
+        title:"About",
+        path:"/about"
+    },
    
 ];
 
