@@ -15,6 +15,10 @@ const Navbar = () => {
         title:"Meals",
         path:"/meals"
     },
+    {
+        title:"Gellary",
+        path:"/gellary"
+    },
    
 ];
 
