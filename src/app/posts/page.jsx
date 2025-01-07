@@ -1,6 +1,12 @@
 import { getPost } from "@/services/postsAPi";
 import Link from "next/link";
 
+export const metadata={
+    title:{
+        absolute:"posts"
+    },
+    description:"posts data is included"
+}
 
 const PostsPage =async () => {
     const postsData=await getPost()

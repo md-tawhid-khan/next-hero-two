@@ -2,6 +2,10 @@ import Meals from '@/component/Meals';
 import React from 'react';
 import styles from './styles.module.css'
 
+export const metadata={
+    title:"meals",
+    description:"meals page"
+}
 
 const MealsPage = () => {
     return (
