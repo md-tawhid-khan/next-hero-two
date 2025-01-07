@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
+
 const Meals = () => {
     const [search, setSearch] = useState('a');
     const [error, setError] = useState('');
