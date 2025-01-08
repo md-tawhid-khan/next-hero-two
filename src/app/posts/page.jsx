@@ -15,9 +15,10 @@ const PostsPage =async () => {
     const postsData=await getPost()
     // console.log(postsData)
 
-    if(postsData){
-        redirect(`/posts/${postsData[0].id}`)
-    }
+    // ---------------- redirect route --------------
+    // if(postsData){
+    //     redirect(`/posts/${postsData[0].id}`)
+    // }
 
     return (
         <div >
