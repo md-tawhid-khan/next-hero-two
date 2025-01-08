@@ -2,6 +2,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/component/Navbar";
+import AuthProvider from "@/provider/AuthProvider";
 
 const inter = Inter({subsets:["latin"]})
 
@@ -20,7 +21,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body
         className={inter.className}
-      >    
+      >   
+      <AuthProvider>
           <Navbar/>      
      <div>
      {children}
@@ -28,6 +30,7 @@ export default function RootLayout({ children }) {
         <footer className="bg-orange-500"> 
           <p>this is footer section</p>
         </footer>
+        </AuthProvider> 
       </body>
     </html>
   );
