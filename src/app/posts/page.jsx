@@ -1,5 +1,6 @@
 import { getPost } from "@/services/postsAPi";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export const metadata={
     title:{
@@ -8,9 +9,16 @@ export const metadata={
     description:"posts data is included"
 }
 
+
+
 const PostsPage =async () => {
     const postsData=await getPost()
-    console.log(postsData)
+    // console.log(postsData)
+
+    if(postsData){
+        redirect(`/posts/${postsData[0].id}`)
+    }
+
     return (
         <div >
             <h1 className="text-center text-3xl text-yellow-500 my-8">this is posts page</h1>
