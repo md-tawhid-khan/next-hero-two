@@ -4,7 +4,8 @@ import CredentialsProvider from "next-auth/providers/credentials"
 export const authOptions ={
     secret:process.env.NEXT_PUBLIC_AUTH_SECRET,
     session:{
-        strategy:'jwt'
+        strategy:'jwt',
+        maxAge: 60 * 60 * 24 * 30
     },
     providers:[
         CredentialsProvider({
@@ -38,7 +39,25 @@ export const authOptions ={
            }
    
         })      
-    ]
+    ],
+    callbacks: {
+       
+        async jwt({ token, account, user}) {
+            // Persist the OAuth access_token and or the user id to the token right after signin
+            if (account) {
+              token.type = user.type,
+              token.image = user.image
+              
+            }
+            return token;
+          },
+          async session({ session,  token }) {
+            session.user.type=token.type;
+            session.user.image=token.image;
+            return session
+          },
+    }
+
 }
 
 const handler=NextAuth(authOptions)
@@ -48,30 +67,40 @@ const users=[
         id:1,
         name:'tawhid',
         email:'tal@tal.com',
+        type:"admin",
+        image:"https://i.ibb.co/gDbnDFK/Whats-App-Image-2025-01-11-at-22-20-27.jpg",
         password:"tawhid"
     },
     {
         id:2,
         name:'khan ',
         email:'khan@khan.com',
+        type:"user",
+        image:"https://i.ibb.co/gDbnDFK/Whats-App-Image-2025-01-11-at-22-20-27.jpg",
         password:"tawhid"
     },
     {
         id:3,
         name:'sorker',
         email:'sorker@sorker.com',
+        type:"user",
+        image:"https://i.ibb.co/gDbnDFK/Whats-App-Image-2025-01-11-at-22-20-27.jpg",
         password:"tawhid"
     },
     {
         id:4,
         name:'tawhid khan',
         email:'tawhid@khan.com',
+        type:"user",
+        image:"https://i.ibb.co/gDbnDFK/Whats-App-Image-2025-01-11-at-22-20-27.jpg",
         password:"tawhid"
     },
     {
         id:5,
         name:'tawhid sorker',
         email:'tawhid@sorker.com',
+        type:"user",
+        image:"https://i.ibb.co/gDbnDFK/Whats-App-Image-2025-01-11-at-22-20-27.jpg",
         password:"tawhid"
     },
 ]
