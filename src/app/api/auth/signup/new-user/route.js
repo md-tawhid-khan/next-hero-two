@@ -6,7 +6,7 @@ const db =await connectDB()
 const userConnection=db.collection('users')
 const newUser=await request.json()
 const res= await userConnection.insertOne(newUser)
-console.log('new user info', res)
+// console.log('new user info', res)
  return  Response.json({message:'new user created'})
     }
     catch(error){
