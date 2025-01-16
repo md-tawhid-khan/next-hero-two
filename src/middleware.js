@@ -9,7 +9,7 @@ export const middleware=(request)=>{
 
   const token=cookies(request).get('next-auth.session-token')
 
-  console.log(token)
+  // console.log(token)
 
     // const cookies=request.cookies.get('token')
     // if(!cookies || cookies.value !== coo){

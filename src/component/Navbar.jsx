@@ -47,7 +47,8 @@ const Navbar = () => {
         </button> */}
 
         {
-            session?.status==="authenticated"?<button onClick={()=>signOut()}>Log out</button> : <button onClick={handleAuth}>Log in</button>
+            session?.status==="authenticated"?<button onClick={()=>signOut()}>Log out</button> :(<div> <button onClick={handleAuth}>Log in</button>  <Link href={'/api/auth/signup'}><button>sign up</button></Link> </div>)
+          
         }
 
 
